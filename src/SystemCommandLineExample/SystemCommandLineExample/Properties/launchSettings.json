@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SystemCommandLineExample": {
+      "commandName": "Project",
+      "commandLineArgs": "--age afadg --name \"Kathleen\" "
+    }
+  }
+}
