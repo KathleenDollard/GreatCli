@@ -2,7 +2,7 @@
   "profiles": {
     "SystemCommandLineExample": {
       "commandName": "Project",
-      "commandLineArgs": "-h"
+      "commandLineArgs": " --age 29"
     }
   }
 }
