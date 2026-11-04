@@ -16,7 +16,9 @@ internal class Cli
         Option<int> ageOption = GetAgeOption();
         Option<string> greetingOption = GetGreetingOption();
 
-        rootCommand = new RootCommand("System.CommandLine example");
+        // Not simplifying to collection expression because
+        // constructor argument would only work in C# 15/.NET 11
+        rootCommand = new(description: "System.CommandLine example");
         rootCommand.Add(nameOption);
         rootCommand.Add(ageOption);
         rootCommand.Add(greetingOption);
@@ -36,14 +38,28 @@ internal class Cli
             Greeting = greeting;
         });
     }
+    
+    public int Run(string[] args)
+    {
+        return rootCommand.Parse(args).Invoke();
+    }
 
     private static Option<string> GetNameOption()
     {
-        return new Option<string>("--name")
+        var nameOption = new Option<string>("--name")
         {
             Description = "Your name",
             Required = true
         };
+        nameOption.Validators.Add(result =>
+        {
+            string? name = result.GetValue(nameOption);
+            if (string.IsNullOrEmpty(name))
+            {
+                result.AddError("Name is required");
+            }
+        });
+        return nameOption;
     }    
 
     private static Option<int> GetAgeOption()
@@ -63,8 +79,4 @@ internal class Cli
         };
     }
 
-    public int Run(string[] args)
-    {
-        return rootCommand.Parse(args).Invoke();
-    }
 }

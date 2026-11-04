@@ -10,8 +10,8 @@ public class Person
     /// <summary>
     /// "Your age"
     /// </summary>
-    public int Age { get; set; } = 0;
+    public int Age { get; set; }
 
     public string PreferredMessage(string greeting)
-        => $"{greeting} {this.Name}, you are {this.Age} years old. ";
+        => $"{greeting} {Name}, you are {Age} years old. ";
 }

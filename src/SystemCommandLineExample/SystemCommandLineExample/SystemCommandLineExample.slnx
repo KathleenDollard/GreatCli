@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SystemCommandLineExample/SystemCommandLineExample.csproj" />
+  <Project Path="SystemCommandLineExampleLib/SystemCommandLineExampleLib.csproj" Id="50417a62-afa1-4d16-84d5-ab4167874b7e" />
+</Solution>
